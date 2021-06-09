@@ -1,0 +1,30 @@
+In [1]: from API_basic.models import Article
+
+In [3]: from API_basic.serializer import ArticleSerializer
+
+In [4]: from rest_framework.renderers import JSONRenderer
+
+In [5]: from rest_framework.parsers import JSONParser
+
+In [6]: a = Article(title = 'Article Title', author = 'Ankur', email= 'ankurvermaaxz@gm
+   ...: ail.com')
+
+In [7]: a.save()
+
+a = Article(title = 'Article Title 2', author = 'Ankur', email= 'ankurvermaaxz@
+   ...: gmail.com')
+
+In [9]: a.save()
+
+In [10]: serializer = ArticleSerializer(a)
+
+In [11]: serializer.data
+Out[11]: {'title': 'Article Title 2', 'author': 'Ankur', 'email': 'ankurvermaaxz@gmail.c
+om', 'date': '2021-06-09T08:25:16.543471Z'}
+
+In [12]: content = JSONRenderer().render(serializer.data)
+
+In [13]: content
+Out[13]: b'{"title":"Article Title 2","author":"Ankur","email":"ankurvermaaxz@gmail.com"
+,"date":"2021-06-09T08:25:16.543471Z"}'
+
