@@ -25,7 +25,7 @@ def article_list(request):
 
 
 @csrf_exempt
-def article_detail(request, pk):
+def article_detail(request, pk): #pk - primary key
     try:
         article = Article.objects.get(pk=pk)
 
